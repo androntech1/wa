@@ -1,5 +1,4 @@
 const express = require("express");
-const { url } = require("inspector");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 var QRCode = require("qrcode");
