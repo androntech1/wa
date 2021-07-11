@@ -1,4 +1,5 @@
 const express = require("express");
+const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 var QRCode = require("qrcode");
@@ -25,20 +26,25 @@ let newsOptions = {
   numOfResults: 10,
 };
 
-express()
+app
   .use(express.static(path.join(__dirname, "public")))
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "ejs")
-  .get("/", (req, res) => {
-    client.on("qr", (qr) => {
-      // Generate and scan this code with your phone
-      console.log("QR RECEIVED", qr);
-      QRCode.toDataURL(qr, function (err, url) {
-        res.render("index", { qrCode: url, now: getDateTime() });
-      });
-    });
-  })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.get("/qr", (req, res) => {
+  client.on("qr", (qr) => {
+    // Generate and scan this code with your phone
+    console.log("QR RECEIVED", qr);
+    QRCode.toDataURL(qr, function (err, url) {
+      res.render("index", { qrCode: url, now: getDateTime() });
+    });
+  });
+});
 
 client.on("ready", () => {
   console.log("Client is ready!");
@@ -49,6 +55,11 @@ client.on("message", (msg) => {
   console.log(message);
 
   languageCode = message.indexOf("hindi") !== -1 ? "hi" : "en";
+
+  if (message.includes("morning")) {
+    msg.reply("Good Morning 😊");
+  }
+
   if (message === "news") {
     //Show intro msg
     msg.reply(defaultMessage);
