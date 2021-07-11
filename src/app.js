@@ -32,7 +32,6 @@ const {
 const { defaultMessage } = require("./utils/default");
 
 let languageCode = "en";
-let isHindi = false;
 
 let newsOptions = {
   lang: "en",
