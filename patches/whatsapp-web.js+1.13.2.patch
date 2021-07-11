@@ -1,14 +1,17 @@
 diff --git a/node_modules/whatsapp-web.js/src/util/Constants.js b/node_modules/whatsapp-web.js/src/util/Constants.js
-index 0fc3966..2302959 100644
+index 0fc3966..84e4d9f 100644
 --- a/node_modules/whatsapp-web.js/src/util/Constants.js
 +++ b/node_modules/whatsapp-web.js/src/util/Constants.js
-@@ -5,7 +5,8 @@ exports.WhatsWebURL = 'https://web.whatsapp.com/';
+@@ -5,7 +5,11 @@ exports.WhatsWebURL = 'https://web.whatsapp.com/';
  exports.DefaultOptions = {
      puppeteer: {
          headless: true,
 -        defaultViewport: null
 +        defaultViewport: null,
-+        args: ['--no-sandbox' ]
++        args: [
++            '--no-sandbox',
++            '--disable-setuid-sandbox',
++          ],
      },
      session: false,
      qrTimeoutMs: 45000,
