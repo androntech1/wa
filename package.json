@@ -8,18 +8,17 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "babel-node src/index",
+    "start": "node src/app.js",
     "test": "node test.js"
   },
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.15.2",
-    "qrcode": "^1.4.4"
+    "inshorts-api": "^1.0.3",
+    "qrcode": "^1.4.4",
+    "whatsapp-web.js": "^1.13.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/node": "^7.14.7",
-    "@babel/preset-env": "^7.14.7",
     "got": "^11.3.0",
     "nodemon": "^2.0.11",
     "tape": "^4.7.0"
