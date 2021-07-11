@@ -56,7 +56,7 @@ module.exports.getFinalNews = function (newsResponse) {
 };
 
 module.exports.getDateTime = function () {
-  let date = new Date();
+  let date = new Date().toLocaleString("en-US", { timeZone: "Asia/kolkata" });
   let dateStr =
     ("00" + (date.getMonth() + 1)).slice(-2) +
     "/" +
