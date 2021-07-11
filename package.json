@@ -9,13 +9,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
-    "test": "node test.js"
+    "test": "node test.js",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.15.2",
     "fs": "0.0.1-security",
     "inshorts-api": "^1.0.3",
+    "patch-package": "^6.4.7",
     "qrcode": "^1.4.4",
     "whatsapp-web.js": "^1.13.2"
   },
